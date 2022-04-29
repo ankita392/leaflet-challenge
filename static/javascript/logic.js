@@ -77,7 +77,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     earthquakes.addTo(myMap);
    })
    
-    d3.json(platesURL, function(plateData) {
+d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(platesData) {
         
         L.geoJson(plateData, {
             color: "#DC143C",
@@ -106,3 +106,5 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   
     legend.addTo(myMap);
 });
+})
+
