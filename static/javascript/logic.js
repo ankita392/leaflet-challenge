@@ -1,4 +1,3 @@
-var earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 var earthquakes = new L.LayerGroup();
 var tectonicPlates = new L.LayerGroup();
