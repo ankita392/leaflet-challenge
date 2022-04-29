@@ -23,14 +23,7 @@ var myMap = L.map("map", {
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
-    function markerSize(magnitude) {
-        if (magnitude === 0) {
-          return 1;
-        }
-        return magnitude * 3;
-    }
-    
-    function styleInfo(feature) {
+     function styleInfo(feature) {
         return {
           opacity: 1,
           fillOpacity: 1,
@@ -40,6 +33,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
           stroke: true,
           weight: 0.5
         };
+    }
+   
+    function markerSize(magnitude) {
+        if (magnitude === 0) {
+          return 1;
+        }
+        return magnitude * 3;
     }
     
     function chooseColor(magnitude) {
@@ -59,7 +59,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         }
     }
     
-    L.geoJSON(earthquakeData, {
+    L.geoJSON(data, {
         pointToLayer: function(feature, latlng) {
             return L.circleMarker(latlng);
         },
@@ -87,7 +87,6 @@ d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/
         tectonicPlates.addTo(myMap);
     });
 
-   
     var legend = L.control({ position: "bottomright" });
     legend.onAdd = function() {
         var div = L.DomUtil.create("div", "info legend"), 
