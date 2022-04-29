@@ -24,10 +24,6 @@ var myMap = L.map("map", {
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
-
-})
-d3.json(earthquakesURL, function(earthquakeData) {
-   
     function markerSize(magnitude) {
         if (magnitude === 0) {
           return 1;
@@ -79,7 +75,7 @@ d3.json(earthquakesURL, function(earthquakeData) {
     }).addTo(earthquakes);
     
     earthquakes.addTo(myMap);
-
+   })
    
     d3.json(platesURL, function(plateData) {
         
